@@ -13,15 +13,12 @@ import Special from '../components/Special'
 const Home = () => {
   return (
   <>
-  <Hedar/>
-  <Nevbar/>
   <Bennar/>
   <Four/>
    <Five/>
    <Six/>
    <Phone/>
    <Special/>
-   <Footer/>
   </>
   )
 }
