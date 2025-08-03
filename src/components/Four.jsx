@@ -8,7 +8,7 @@ const Four = () => {
     return (
         <div>
             <Container>
-                <div className="py-20 flex gap-10">
+                <div className="py-20 flex gap-10 ">
                     <div className="w-6/12 relative">
                         <img src={pri} alt="" className="w-full" />
 
