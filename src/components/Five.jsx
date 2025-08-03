@@ -66,7 +66,7 @@ const Five = () => {
             <h4 className='pl-[72%] pt-[5%] font-dm text-[#262626] font-[700]'>Shape <HiOutlineRefresh className=' inline-block' /></h4>
             <h4 className='pl-[57%] pt-[5%] font-dm text-[#262626] font-[700]'>Add to Cart <IoCart className=' inline-block pl-2 text-[30px]' /></h4>
           </div>
-          <div className=" w-3/12 w-full justify-between flex pt-5">
+          <div className=" w-3/12 justify-between flex pt-5">
             <div className="">
               <h5 className=' font-dm text-[20px] font-[700] text-[#262626]'>Basic Crew Neck Tee</h5>
               <p className=' text-[14px] font-dm'>$44.00</p>
