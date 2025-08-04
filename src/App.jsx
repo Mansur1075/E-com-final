@@ -12,6 +12,8 @@ let router = createBrowserRouter(createRoutesFromElements (
   <Route element={<Layouts/>}>
     <Route index element={<Home/>}></Route>
     <Route path="/shop" element={<Shop/>}></Route>
+    
+
   </Route>
 ))
 

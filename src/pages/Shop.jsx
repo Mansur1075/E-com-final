@@ -1,7 +1,7 @@
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <div className="py-5"></div>
   )
 }
 
