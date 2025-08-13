@@ -41,14 +41,14 @@ const Nevbar = () => {
             <Container>
                 <div className="flex items-center">
                     <div className="w-2/7 group cursor-pointer relative">
-                        <div ref={cateRef} className="flex items-center gap-3 font-semibold text-[16px] font-dm">
+                        <div ref={cateRef} className="flex items-center lg:gap-3 gap-1 lg:font-semibold text-[10px] lg:text-[16px] font-dm">
                             <FaBars />
                             <h4>Shop by Category</h4>
                         </div>
                         {show &&
-                            <div className="bg-[#2D2D2D] py-3 absolute left-0 top-[55px] w-full z-10">
+                            <div className="bg-[#2D2D2D] lg:py-3 absolute left-0 mt-5 lg:mt-0 lg:top-[55px] w-full z-10">
                                 <ul>
-                                    <li className='text-white pl-4 border-b py-3 duration-300 hover:pl-6 hover:font-bold group relative'>
+                                    <li className='text-white pl-4 text-[10px] lg:text-[18px] border-b py-3 duration-300 hover:pl-6 hover:font-bold group relative'>
                                         <div className="flex items-center justify-between pr-3">
                                             <span>Accessories</span>
                                             <FaAngleRight />
@@ -96,25 +96,25 @@ const Nevbar = () => {
                                             </div>
                                         </div>
                                     </li>
-                                    <li className='text-white pl-4 border-b py-3 duration-300 hover:pl-6 hover:font-bold'>
+                                    <li className='text-white pl-4 text-[10px] lg:text-[18px] border-b py-3 duration-300 hover:pl-6 lg:hover:font-bold'>
                                         <div className="flex items-center justify-between pr-3">
                                             <span>Furniture</span>
                                             <FaAngleRight />
                                         </div>
                                     </li>
-                                    <li className='text-white pl-4 border-b py-3 duration-300 hover:pl-6 hover:font-bold'>
+                                    <li className='text-white pl-4 text-[10px] lg:text-[18px] border-b py-3 duration-300 hover:pl-6 hover:font-bold'>
                                         <div className="flex items-center justify-between pr-3">
                                             <span>Electronics</span>
                                             <FaAngleRight />
                                         </div>
                                     </li>
-                                    <li className='text-white pl-4 border-b py-3 duration-300 hover:pl-6 hover:font-bold'>
+                                    <li className='text-white pl-4 text-[10px] lg:text-[18px] border-b py-3 duration-300 hover:pl-6 hover:font-bold'>
                                         <div className="flex items-center justify-between pr-3">
                                             <span>Clothes</span>
                                             <FaAngleRight />
                                         </div>
                                     </li>
-                                    <li className='text-white pl-4 py-3 duration-300 hover:pl-6 hover:font-bold'>
+                                    <li className='text-white pl-4 text-[10px] lg:text-[18px] py-3 duration-300 hover:pl-6 hover:font-bold'>
                                         <div className="flex items-center justify-between pr-3">
                                             <span>Bags</span>
                                             <FaAngleRight />
@@ -127,29 +127,29 @@ const Nevbar = () => {
 
                     <div className="w-4/7">
                         <div className='flex justify-between items-center relative'>
-                            <input className="bg-white p-5 w-full border-0 shadow-lg outline-0" type="text" placeholder='Search Products' />
-                            <div className="absolute top-6 right-[20px] text-gray-600">
-                                <IoSearchOutline />
+                            <input className="bg-white lg:py-5 pr-[-5px] py-3 pl-[20px] lg:pl-5 lg:pr-[38px] lg:w-full border-0  shadow-lg outline-0" type="text" placeholder='Search Products' />
+                            <div className="absolute lg:top-[23px] lg:right-[18px] right-[18px] pl-3 text-gray-600">
+                                <IoSearchOutline className='text-[20px] font-bold' />
                             </div>
                         </div>
                     </div>
                     <div className="w-1/7 relative">
-                        <div className="flex items-center justify-end gap-x-4">
+                        <div className="flex items-center justify-end lg:gap-x-4 gap-2">
                             
-                            <div ref={accRef} className="flex cursor-pointer gap-1">
+                            <div ref={accRef} className="flex cursor-pointer text-[12px] lg:text-[18px] lg:gap-1">
                                 <FaUser />
                                 <FaCaretDown />
                             </div>
                             {acchow &&
-                                <div className="bg-white absolute top-[55px] right-[60px] w-[150px] text-center shadow-lg z-10">
+                                <div className="bg-white absolute top-[50px] lg:top-[55px] lg:right-[60px] w-[70px] lg:w-[150px] text-center shadow-lg z-10">
                                     <ul>
-                                        <li className='hover:bg-black hover:text-white py-2 duration-300'>My Account</li>
-                                        <li className='hover:bg-black hover:text-white py-2 duration-300'>Log Out</li>
+                                        <li className=' lg:text-[18px] text-[10px] hover:bg-black hover:text-white py-2 duration-300'>My Account</li>
+                                        <li className='lg:text-[18px] text-[10px] hover:bg-black hover:text-white py-2 duration-300'>Log Out</li>
                                     </ul>
                                 </div>
                             }
 
-                            <div ref={cartRef} className="relative cursor-pointer">
+                            <div ref={cartRef} className="relative cursor-pointer text-[12px] lg:text-[18px]">
                                 <FaShoppingCart />
                                 {cartShow &&
                                     <div className="absolute top-[55px] right-0 w-[360px] bg-white shadow-lg  z-10 ">

@@ -1,7 +1,11 @@
+import React from 'react'
+import Shipping from '../components/Shipping'
 
 const Shop = () => {
   return (
-    <div className="py-5"></div>
+    <div>
+      <Shipping/>
+    </div>
   )
 }
 

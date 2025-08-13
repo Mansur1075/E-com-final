@@ -12,7 +12,9 @@ const Bennar = () => {
     speed: 2000,
     autoplaySpeed: 2000,
     slidesToScroll: 1,
+    
     appendDots: dots => (
+     
       <div
         style={{
           borderRadius: "10px",

@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <div className='mansur'
+    <div className='mansur2  p-[15px] rounded-[50%] bg-[#000] right1  absolute left-0 top-[50%] z-[5] text-[#979797] transform - translate-y-[-50%] '
       onClick={onClick}
     ><FaArrowLeft className='nexte'/></div>
   );
@@ -24,9 +24,9 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <div className='mansur2'
+    <div className='mansur2  p-[px] rounded-[50%] bg-[#000] right1  absolute right-0 top-[50%] z-[5] text-[#979797] transform - translate-y-[-50%] '
       onClick={onClick}
-    ><FaArrowRight className='right1'/></div>
+    ><FaArrowRight className=''/></div>
   );
 }
 
@@ -36,7 +36,6 @@ const Five = () => {
  
 
    var settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -45,7 +44,33 @@ const Five = () => {
     speed: 2000,
     autoplaySpeed: 2000,
     nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
+    prevArrow: <SamplePrevArrow />,
+       responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 390,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <div>
