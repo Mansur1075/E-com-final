@@ -6,18 +6,17 @@ import { IoCart } from "react-icons/io5"
 import { Apidata } from "./ContextApi"
 
 const Poste = () => {
-    let {data} = useContext(Apidata)
-    console.log(data);
+    let {info} = useContext(Apidata)
+    console.log(info);
     
    
     
   return (
-    <>
-    {data.map((item)=>(
+    
     <div>
         <div className="flex">
             <div className="w-4/12 relative overflow-hidden group">
-                <img src={item.thumbnail} alt="" />
+                <img src={pri} alt="" />
                 <div className="w-full h-[156px] bg-[#fff] shadow-lg absolute top-[41%] left-[-100%] group-hover:left-[0] duration-500">
                     <h4 className="pl-35 pt-5">Add to Wish List <GiEternalLove className=" inline-block ml-2" /></h4>
                     <h4 className="pl-47 pt-5">Compare <TfiReload className=" inline-block ml-2"/></h4>
@@ -38,9 +37,6 @@ const Poste = () => {
             </div>
         </div>
     </div>
-
-    ))}
-    </>
   )
 }
 
