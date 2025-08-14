@@ -10,7 +10,7 @@ import { RiLayoutGridLine } from "react-icons/ri"
 import { IoMdArrowDropdown } from "react-icons/io"
 import Poste from "./Poste"
 import { PiFlagPennantThin } from "react-icons/pi"
-import Mgsw from "./Mgsw"
+import Pagination from "./Pagination"
 
 
 const Shipping = () => {
@@ -152,12 +152,12 @@ const Shipping = () => {
                                             <select
                                                 id="category"
                                                 name="category"
-                                                className="block w-full  rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:ring focus:ring-blue-200"
+                                                className="block w-full font-bold text-[#767676]  rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:ring focus:ring-blue-200"
                                             >
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
+                                                <option className="font-bold text-[#767676]">1</option>
+                                                <option  className="font-bold text-[#767676]">2</option>
+                                                <option className="font-bold text-[#767676]">3</option>
+                                                <option className="font-bold text-[#767676]">4</option>
                                             </select>
                                         </div>
 
@@ -170,23 +170,23 @@ const Shipping = () => {
                                             <select
                                                 id="category"
                                                 name="category"
-                                                className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                                                className="block w-full font-bold text-[#767676] rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                                             >
-                                                <option>ONE</option>
-                                                <option>TWO</option>
-                                                <option>THREE</option>
-                                                <option>FOUR</option>
+                                                <option className="font-bold text-[#767676]">ONE</option>
+                                                <option className="font-bold text-[#767676]">TWO</option>
+                                                <option className="font-bold text-[#767676]">THREE</option>
+                                                <option className="font-bold text-[#767676]">FOUR</option>
                                             </select>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            <div className="pl-6 pt-6">
+                            <div className="pl-6 pt-6 w-12/12">
                                 <Poste />
                             </div>
                                 <div className="pl-6 pt-6">
-                                    <Mgsw/>
+                                    <Pagination/>
                                 </div>
                         </div>
                     </div>

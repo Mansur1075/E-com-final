@@ -24,15 +24,15 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <div className='mansur2  p-[px] rounded-[50%] bg-[#000] right1  absolute right-0 top-[50%] z-[5] text-[#979797] transform - translate-y-[-50%] '
+    <div className='mansur2  p-[16px] rounded-[50%] bg-[#000] right1  absolute right-0 top-[50%] z-[5] text-[#979797] transform - translate-y-[-50%] '
       onClick={onClick}
     ><FaArrowRight className=''/></div>
   );
 }
 
 const Five = () => {
- let data= useContext(Apidata)
- console.log(data);
+ let {info,loading} = useContext(Apidata)
+ 
  
 
    var settings = {
@@ -45,6 +45,7 @@ const Five = () => {
     autoplaySpeed: 2000,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+
        responsive: [
       {
         breakpoint: 1024,
@@ -72,6 +73,25 @@ const Five = () => {
       }
     ]
   };
+
+  if(loading){
+    return(
+      <Container>
+               <div className="w-full  h-[564px] items-center">
+                    <div className="flex flex-col justify-center items-center h-[70vh]">
+                        <div className="w-16 h-16 border-4 border-[#000] border-t-transparent rounded-full animate-spin"></div>
+
+                        <h1 className="mt-5 text-center text-[28px] font-bold text-[#767676]">
+                            Ready for You..
+                        </h1>
+                        <p className="text-gray-500 mt-2">Please wait a moment</p>
+                    </div>
+                </div>
+      </Container>
+    )
+  
+  }
+
   return (
     <div>
       <Container>
@@ -81,24 +101,26 @@ const Five = () => {
           </div>
           <div className="five">
           <Slider {...settings}>
-            {data.map((item) =>(     
-              <div className="W-3/12 relative overflow-hidden group p-4 rounded-2xl">
+            {info.map((item) =>(     
+              <div className="W-3/12 relative overflow-hidden group p-4 rounded-2xl  ">
             <Link to="/shop">
-          <img src={item.thumbnail} alt="" className='w-full' />
+            <div className=" hover:shadow-md duration-300 hover:bg-[#f0f8ff]">
+              <img src={item.thumbnail} alt="" className='w-full' />
+            </div>
             </Link>
           <div className="">
             <button className='px-[20px] py-[5px] bg-[black] text-[#fff] absolute top-[8%] left-[10%] cursor-pointer '>
               %{item.discountPercentage}
             </button>
           </div>
-          <div className="W-3/12 bg-[#fff] cursor-pointer   top-[144px]  absolute left-[-100%] h-[40%] w-full group-hover:left-[0px] duration-300 ease-in-out" >
+          <div className="W-3/12 bg-[#fff] cursor-pointer   top-[146px]  absolute left-[-100%] h-[40%] w-full group-hover:left-[0px] duration-300 ease-in-out" >
             <h4 className='pl-[50%] pt-[10%] text-[16px] text-[#767676] font-dm font-[400]'>Add to Wish List <GiEternalLove className=' text-[#000] inline-block'/></h4>
             <h4 className='pl-[72%] pt-[5%] font-dm text-[#262626] font-[700]'>Shape <HiOutlineRefresh className=' inline-block' /></h4>
             <h4 className='pl-[57%] pt-[5%] font-dm text-[#262626] font-[700]'>Add to Cart <IoCart className=' inline-block pl-2 text-[30px]' /></h4>
           </div>
           <div className=" w-full justify-between flex pt-5">
             <div className="">
-              <h5 className=' font-dm text-[20px] font-[600] text-[#262626]'>{item.title}</h5>
+              <h5 className=' font-dm text-[16px] font-[600] text-[#262626]'>{item.title}</h5>
               <p className=' text-[14px] font-dm text-[#473835] '>${item.price}</p>
             </div>
             <div className="">

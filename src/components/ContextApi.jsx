@@ -5,21 +5,22 @@ const Apidata = createContext();
 
 const ContextApi = ({children}) => {
     let [info, setInfo]= useState([]);
+    let [loading, setLoading]= useState(true)
     let getData = () =>{
         axios.get("https://dummyjson.com/products").then ((response)=>{
-        setInfo(response.data.products); 
+        setInfo(response.data.products);
+        setLoading(false)
         })
     }   
     useEffect(()=>{
-      
-        getData();
+      getData();
 
     },[])
   return (
    <>
-   <Apidata.Provider value={info}>{children}</Apidata.Provider>
+   <Apidata.Provider value={{info ,loading}}>{children}</Apidata.Provider>
    </>
   )
 }
 
-export {Apidata,ContextApi}
+export {Apidata, ContextApi}
