@@ -1,7 +1,7 @@
 import { FaBars, FaCaretDown, FaCaretUp, FaMinus, FaPlus, FaThList } from "react-icons/fa"
 import Container from "../components/Container"
 import { AiOutlinePlus } from "react-icons/ai"
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { BiPlus } from "react-icons/bi"
 import { HiMiniMinus } from "react-icons/hi2"
 import { GoDotFill } from "react-icons/go"
@@ -11,9 +11,48 @@ import { IoMdArrowDropdown } from "react-icons/io"
 import Poste from "./Poste"
 import { PiFlagPennantThin } from "react-icons/pi"
 import Pagination from "./Pagination"
+import { Apidata } from "./ContextApi"
 
 
 const Shipping = () => {
+
+    let {info} = useContext(Apidata)
+    let [perPage,setPerPage] = useState(6);
+    let [currentPage,setCurrentPage] = useState(1);
+    let lastPage = perPage * currentPage
+    let firstPage = lastPage - perPage
+    let allPage = info.slice(firstPage,lastPage);
+
+
+    let pageNumber =[];
+
+    for ( let i =1; i <= Math.ceil(info.length / perPage); i++){
+
+        pageNumber.push(i);
+    }
+   
+    let twoclick = (index) =>{
+       setCurrentPage(index + 1)
+        
+    }
+    let next = () =>{
+        if(currentPage < pageNumber.length){
+
+            setCurrentPage((state)=> state + 1)
+        }
+        
+    }
+    let prev = ()=>{
+        if(currentPage > 1){
+
+            setCurrentPage((state)=> state - 1)
+        }
+        
+    }
+    
+    
+    
+
     let [show, setShow] = useState(false)
     let [row, rowShow] = useState(false)
     let [two, twoShow] = useState(false)
@@ -183,10 +222,10 @@ const Shipping = () => {
                                 </div>
                             </div>
                             <div className="pl-6 pt-6 w-12/12">
-                                <Poste />
+                                <Poste allPage={allPage} />
                             </div>
-                                <div className="pl-6 pt-6">
-                                    <Pagination/>
+                                <div className="pl-6 pt-6 cursor-pointer font-bold font-dm">
+                                    <Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage}/>
                                 </div>
                         </div>
                     </div>

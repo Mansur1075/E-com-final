@@ -8,8 +8,10 @@ import { data } from "react-router-dom"
 import { FaShoppingCart } from "react-icons/fa"
 import Container from "./Container"
 
-const Poste = () => {
+const Poste = ({ allPage }) => {
     let { info, loading } = useContext(Apidata)
+
+
 
 
     if (loading) {
@@ -32,7 +34,7 @@ const Poste = () => {
 
     return (
         <div className="grid  md:grid-cols-3 gap-4">
-            {info.map((item) => (
+            {allPage.map((item) => (
                 <div className="h-[400px]">
                     <div className="relative h-full overflow-hidden shadow-md group">
                         <img
