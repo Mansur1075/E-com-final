@@ -96,13 +96,13 @@ const Shipping = () => {
                     </div>
                     <div className="py-6 flex">
                         <div className="w-3/12 items-center">
-                            <div onClick={() => setShow(!show)} className="flex items-center justify-between">
+                            <div onClick={() => setShow(!show)} className="flex items-center justify-between cursor-pointer">
                                 <p className="font-bold text-[20px] font-dm cursor-pointer">Shop by Category</p>
                                 {show ? <FaCaretDown /> : <FaCaretUp />}
                             </div>
                             {show &&
                                 <ul>
-                                    <div onClick={() => rowShow(!row)} className="flex justify-between items-center border-b-2 gap-2 pb-2 pt-4">
+                                    <div onClick={() => rowShow(!row)} className="flex justify-between items-center cursor-pointer border-b-2 gap-2 pb-2 pt-4">
                                         <li className=" cursor-pointer text-[16px] text-[#767676] font-bold ">Category 1</li>
                                         {row ? <FaMinus className="text-[#767676]" /> : <FaPlus className="text-[#767676]" />}
                                     </div>
@@ -111,7 +111,7 @@ const Shipping = () => {
                                     <>
                                       {row &&
                                         <div onClick={()=> handleCategory(item)} className=" text-center">
-                                            <h3 className="text-[18px] font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[black] duration-300">{item}</h3>
+                                            <h3 className="text-[18px] cursor-pointer font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[black] duration-300">{item}</h3>
                                         </div>
                                     }
                                     </>
