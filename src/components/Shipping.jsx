@@ -1,7 +1,7 @@
 import { FaBars, FaCaretDown, FaCaretUp, FaMinus, FaPlus, FaThList } from "react-icons/fa"
 import Container from "../components/Container"
 import { AiOutlinePlus } from "react-icons/ai"
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BiPlus } from "react-icons/bi"
 import { HiMiniMinus } from "react-icons/hi2"
 import { GoDotFill } from "react-icons/go"
@@ -22,6 +22,8 @@ const Shipping = () => {
     let lastPage = perPage * currentPage
     let firstPage = lastPage - perPage
     let allPage = info.slice(firstPage,lastPage);
+    let [category,setCategory]= useState([]);
+    let [filterCategory, setFilterCategory] = useState([]);
 
 
     let pageNumber =[];
@@ -49,6 +51,17 @@ const Shipping = () => {
         }
         
     }
+    let handlePageNumber = (e) =>{
+       setPerPage(e.target.value);
+        
+
+    }
+    useEffect(() =>{
+      setCategory([...new Set(info.map((item) => item.category))]);
+
+    },[info])
+    console.log(category);
+    
     
     
     
@@ -63,6 +76,16 @@ const Shipping = () => {
     let [tmw, tmwShow] = useState(false)
     let [tow, towShow] = useState(false)
     let [tnw, tnwShow] = useState(false)
+
+
+    let handleCategory = (citem) =>{
+        console.log(citem);
+        let filterItem = info.filter((item) => item.category ==citem)
+        setFilterCategory(filterItem);
+        
+    }
+    
+
     return (
         <div className="py-6">
             <section>
@@ -83,15 +106,17 @@ const Shipping = () => {
                                         <li className=" cursor-pointer text-[16px] text-[#767676] font-bold ">Category 1</li>
                                         {row ? <FaMinus className="text-[#767676]" /> : <FaPlus className="text-[#767676]" />}
                                     </div>
-                                    {row &&
-                                        <div className=" text-center">
-                                            <h3 className="text-[18px] font-bold font-dm text-[#767676] border-b-2 hover:bg-[black] duration-300">1</h3>
-                                            <h3 className="text-[18px] font-bold font-dm text-[#767676] border-b-2 hover:bg-[black] duration-300">2</h3>
-                                            <h3 className="text-[18px] font-bold font-dm text-[#767676] border-b-2 hover:bg-[black] duration-300">3</h3>
-                                            <h3 className="text-[18px] font-bold font-dm text-[#767676] border-b-2 hover:bg-[black] duration-300">4</h3>
-                                            <h3 className="text-[18px] font-bold font-dm text-[#767676] border-b-2 hover:bg-[black] duration-300">5</h3>
+
+                                    {category.map((item)=>(
+                                    <>
+                                      {row &&
+                                        <div onClick={()=> handleCategory(item)} className=" text-center">
+                                            <h3 className="text-[18px] font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[black] duration-300">{item}</h3>
                                         </div>
                                     }
+                                    </>
+                                    ))}
+                                    
                                     <div onClick={() => ttoShow(!tto)} className="flex justify-between items-center border-b-2 gap-2 pb-2 pt-4">
                                         <li className=" cursor-pointer text-[16px] text-[#767676] font-bold ">Category 2</li>
                                         {tto ? <FaMinus className="text-[#767676]" /> : <FaPlus className="text-[#767676]" />}
@@ -201,28 +226,27 @@ const Shipping = () => {
                                         </div>
 
                                     </div>
-                                    <div className="flex gap-5 text-center">
-                                        <div className="pt-2 text-[16px] text-[#767676]">
+                                    <div className="flex gap-2 text-center items-center">
+                                        <div className="text-[16px] text-[#767676]">
                                             <h4 >Show:</h4>
                                         </div>
                                         <div className="w-24">
-                                            <select
-                                                id="category"
-                                                name="category"
-                                                className="block w-full font-bold text-[#767676] rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
-                                            >
-                                                <option className="font-bold text-[#767676]">ONE</option>
-                                                <option className="font-bold text-[#767676]">TWO</option>
-                                                <option className="font-bold text-[#767676]">THREE</option>
-                                                <option className="font-bold text-[#767676]">FOUR</option>
-                                            </select>
+                                           <select onChange={handlePageNumber}
+                                           name="" 
+                                           id="" className=" border-[1px] border-[#0062ff42] py-2 rounded-[5px] shadow-md pl-20 pr-1">
+                                            <option value="6">6</option>
+                                            <option value="12">12</option>
+                                            <option value="18">18</option>
+                                            <option value="24">24</option>
+                                            <option value="30">30</option>
+                                           </select>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
                             <div className="pl-6 pt-6 w-12/12">
-                                <Poste allPage={allPage} />
+                                <Poste allPage={allPage} filterCategory={filterCategory} />
                             </div>
                                 <div className="pl-6 pt-6 cursor-pointer font-bold font-dm">
                                     <Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage}/>
