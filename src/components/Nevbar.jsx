@@ -152,14 +152,14 @@ const Nevbar = () => {
                             <div ref={cartRef} className="relative cursor-pointer text-[12px] lg:text-[18px]">
                                 <FaShoppingCart />
                                 {cartShow &&
-                                    <div className="absolute top-[55px] right-0 w-[360px] bg-white shadow-lg  z-10 ">
+                                    <div className="absolute top-[55px] right-0 w-[400px] bg-white shadow-lg  z-10 ">
                                         <div className="bg-[#F5F5F3] p-4 flex items-center">
                                             <div className="w-[80px] h-[80px] bg-[#979797]"></div>
-                                            <div className="pl-2 font-bold text-[16x]">
-                                                <h4>Black Smart Watch</h4>
-                                                <h4>$44.00</h4>
+                                            <div className="">
+                                                <h4 className='ml-2 text-[16x]  font-dm'>Black Smart Watch</h4>
+                                                <h4 className='ml-2 font-dm'>$44.00</h4>
                                             </div>
-                                            <div className="pl-[80px]">
+                                            <div className="pl-[100px]">
                                                 <ImCross />
                                             </div>
                                         </div>
@@ -168,8 +168,8 @@ const Nevbar = () => {
                                                 <h4>Subtotal: $44.00</h4>
                                             </div>
                                             <div className="">
-                                                <button className=' border-[1px] px-[30px] py-[15px] mb-4 ml-4 hover:bg-[#000] hover:text-[#fff] duration-700'>View Cart</button>
-                                                <button className='  border-[1px] px-[30px] py-[15px] mb-4 ml-15 hover:bg-[#000] hover:text-[#fff] duration-700'>Checkout</button>
+                                                <button className=' border-[1px] px-[30px] py-[15px] mb-4 ml-5 hover:bg-[#000] hover:text-[#fff] duration-700'>View Cart</button>
+                                                <button className='  border-[1px] px-[30px] py-[15px] mb-4 ml-21 hover:bg-[#000] hover:text-[#fff] duration-700'>Checkout</button>
                                             </div>
                                         </div>
                                     </div>
