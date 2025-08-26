@@ -25,9 +25,11 @@ const Shop = () => {
     let lastPage = perPage * currentPage
     let firstPage = lastPage - perPage
     let allPage = info.slice(firstPage, lastPage);
+    let [Active, setActive] = useState("")
     let [category, setCategory] = useState([]);
     let [filterCategory, setFilterCategory] = useState([]);
-
+  
+    
 
     let pageNumber = [];
 
@@ -85,6 +87,17 @@ const Shop = () => {
 
     }
 
+    let handleAllProduct =() =>{ 
+        setFilterCategory("")
+
+    }
+    let handleActive =() => {
+        setActive("Active")
+        
+    }
+    console.log(Active);
+    
+
   
   return (
      <div className="py-6">
@@ -100,14 +113,15 @@ const Shop = () => {
                                 <p className="font-bold text-[20px] font-dm cursor-pointer">Shop by Category</p>
                                 {show ? <FaCaretDown /> : <FaCaretUp />}
                             </div>
+                            
                             {show &&
                                 <ul>
-
+                                    <h3 onClick={handleAllProduct} className="text-[25px] text-center cursor-pointer border-[#000] font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[#676767] hover:text-[#ffff] duration-300"> All product</h3>
 
                                     {category.map((item) => (
                                         <>
 
-                                            <div onClick={() => handleCategory(item)} className=" text-center pt-2">
+                                            <div onClick={() => handleCategory(item)} className=" text-center pt-0">
                                                 <h3 className="text-[18px] cursor-pointer font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[black] duration-300">{item}</h3>
                                             </div>
 
@@ -171,7 +185,7 @@ const Shop = () => {
                                 <div className="">
                                     <div className="flex gap-3">
                                         <div className=" border-2 p-[5px] hover:bg-black hover:text-[#fff]"><RiLayoutGridLine /></div>
-                                        <div className=" text-center border-1 border-[#767676] p-[5px] hover:bg-black hover:text-[#fff] "><FaThList /></div>
+                                        <div onClick={handleActive} className=" text-center border-1 border-[#767676] p-[5px] hover:bg-black hover:text-[#fff] "><FaThList /></div>
                                     </div>
                                 </div>
                                 <div className="flex  gap-4">
@@ -193,7 +207,7 @@ const Shop = () => {
                                         </div>
 
                                     </div>
-                                    <div className="flex gap-2 text-center items-center">
+                                   {!filterCategory.length && ( <div className="flex gap-2 text-center items-center">
                                         <div className="text-[16px] text-[#767676]">
                                             <h4 >Show:</h4>
                                         </div>
@@ -209,14 +223,14 @@ const Shop = () => {
                                             </select>
                                         </div>
 
-                                    </div>
+                                    </div>)}
                                 </div>
                             </div>
                             <div className="pl-6 pt-6 w-12/12">
-                                <Poste allPage={allPage} filterCategory={filterCategory}/>
+                                <Poste allPage={allPage} filterCategory={filterCategory} Active={Active}/>
                             </div>
                             <div className="pl-6 pt-6 cursor-pointer font-bold font-dm">
-                                <Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage} />
+                                {!filterCategory.length && (<Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage} />)}
                             </div>
                         </div>
                     </div>

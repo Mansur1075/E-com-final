@@ -1,7 +1,7 @@
 
 
 import { GiEternalLove, GiSelfLove } from "react-icons/gi"
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useInsertionEffect, useState } from 'react'
 import { TfiReload } from "react-icons/tfi"
 import { Apidata } from "./ContextApi"
 
@@ -11,7 +11,35 @@ import Container from "./Container"
 import { Link } from "react-router-dom"
 
 
-const Poste = ({ allPage, filterCategory }) => {
+const Poste = ({ allPage, filterCategory, Active }) => {
+
+  let [allFilter,stAllFilter] = useState([])
+  let [showAll, setShowAll] = useState(true)
+  console.log(Active);
+  
+
+  useEffect(()=>{
+    let filtercate = filterCategory.slice(0,5)
+    stAllFilter(filtercate);
+    
+  
+    
+
+  },[filterCategory])
+
+   let handleShow = () =>{
+    
+   stAllFilter(filterCategory)
+
+   setShowAll(false);
+   }
+
+    let handleLess = () =>{
+   let filtercate = filterCategory.slice(0,5)
+    stAllFilter(filtercate);
+    setShowAll(true)
+    
+   }
   
 
     let { loading } = useContext(Apidata)
@@ -40,9 +68,12 @@ const Poste = ({ allPage, filterCategory }) => {
     return (
 
         <>
-             <div className="grid  md:grid-cols-3  gap-4">
-      {filterCategory.length > 0 ? (
-        filterCategory.map((item) => (
+             <div className="">
+      {allFilter.length > 0 
+      ? 
+      <div className="">
+        <div className="grid  md:grid-cols-3  gap-4">
+        {allFilter.map((item) => (
           <div className="h-[400px]" key={item.id}>
             <div className="relative h-full overflow-hidden shadow-md group ">
               <Link to ={`/Shop/${item.id}`}> 
@@ -80,10 +111,17 @@ const Poste = ({ allPage, filterCategory }) => {
               </div>
             </div>
           </div>
-        ))
-      ) : (
-        allPage.map((item) => (
-          <div className="h-[400px]" key={item.id}>
+        ))}
+      </div>
+      {showAll ? filterCategory.length > 5 && <button onClick={handleShow} className="py-1 px-4 bg-[#7676] mt-5 rounded-[5px] text-[#fff] font-bold font-dm cursor-pointer hover:bg-[black] duration-300">Show all</button> 
+      : <div onClick={handleLess}  className="">
+        <button  className="py-1 px-4 bg-[#7676] text-[#fff] font-bold font-dm cursor-pointer hover:bg-[black] rounded-[5px] mt-5 duration-300">Less show</button>
+      </div> }
+      </div>
+      : 
+      <div className={`${Active == "Active ?  'hello' : "} grid  md:grid-cols-3  gap-4`}>
+        { allPage.map((item) => (
+            <div className="h-[400px] " key={item.id}>
             <div className="relative h-full overflow-hidden shadow-md group">
               <Link to ={`/Shop/${item.id}`}> 
               
@@ -119,9 +157,11 @@ const Poste = ({ allPage, filterCategory }) => {
                 </div>
               </div>
             </div>
-          </div>
-        ))
-      )}
+          </div>  
+        ))}
+      </div>
+       
+      }
 
 
 
