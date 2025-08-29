@@ -1,7 +1,7 @@
-import { FaBars, FaCaretDown, FaCaretUp, FaMinus, FaPlus, FaThList } from "react-icons/fa"
+import { FaBars, FaCaretDown, FaCaretUp, FaMinus, FaPlus, FaThLarge, FaThList } from "react-icons/fa"
 import Container from "../components/Container"
 import { AiOutlinePlus } from "react-icons/ai"
-import React, {  useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BiPlus } from "react-icons/bi"
 import { HiMiniMinus } from "react-icons/hi2"
 import { GoDotFill } from "react-icons/go"
@@ -17,7 +17,7 @@ import Pagination from "../components/Paginationn"
 
 
 const Shop = () => {
-  
+
     let { info } = useContext(Apidata)
 
     let [perPage, setPerPage] = useState(6);
@@ -25,11 +25,12 @@ const Shop = () => {
     let lastPage = perPage * currentPage
     let firstPage = lastPage - perPage
     let allPage = info.slice(firstPage, lastPage);
-    let [Active, setActive] = useState("")
+
+    let [Active, setActive] = useState(true)
     let [category, setCategory] = useState([]);
     let [filterCategory, setFilterCategory] = useState([]);
-  
-    
+
+
 
     let pageNumber = [];
 
@@ -77,7 +78,7 @@ const Shop = () => {
     let [tew, tewShow] = useState(false)
     let [tmw, tmwShow] = useState(false)
     let [tow, towShow] = useState(false)
-   
+
 
 
     let handleCategory = (citem) => {
@@ -87,20 +88,24 @@ const Shop = () => {
 
     }
 
-    let handleAllProduct =() =>{ 
+    let handleAllProduct = () => {
         setFilterCategory("")
 
     }
-    let handleActive =() => {
-        setActive("Active")
-        
-    }
-    console.log(Active);
-    
+    let handleActive = () => {
+        setActive(true)
 
-  
-  return (
-     <div className="py-6">
+    }
+    let handleUnActive = () => {
+        setActive(false)
+
+    }
+
+
+
+
+    return (
+        <div className="py-6">
             <section>
                 <Container>
                     <div className="py-10">
@@ -113,7 +118,7 @@ const Shop = () => {
                                 <p className="font-bold text-[20px] font-dm cursor-pointer">Shop by Category</p>
                                 {show ? <FaCaretDown /> : <FaCaretUp />}
                             </div>
-                            
+
                             {show &&
                                 <ul>
                                     <h3 onClick={handleAllProduct} className="text-[25px] text-center cursor-pointer border-[#000] font-bold font-dm py-[10px] text-[#767676] border-b-2 hover:bg-[#676767] hover:text-[#ffff] duration-300"> All product</h3>
@@ -184,61 +189,65 @@ const Shop = () => {
                             <div className="pt-[-40px] pl-6 flex  justify-between">
                                 <div className="">
                                     <div className="flex gap-3">
-                                        <div className=" border-2 p-[5px] hover:bg-black hover:text-[#fff]"><RiLayoutGridLine /></div>
-                                        <div onClick={handleActive} className=" text-center border-1 border-[#767676] p-[5px] hover:bg-black hover:text-[#fff] "><FaThList /></div>
+                                        <div onClick={handleActive} className={`${Active ? "p-[5px] text-black bg-[#7676] shadow-md border-[1px] border-[#737373]" : "p-[5px] text-black border-[1px] border-[#737373]"} `}>
+                                        <FaThLarge />
                                     </div>
+                                    <div onClick={handleUnActive} className={`${Active ? "p-[5px] text-black border-[1px] border-[#737373] shadow-md" : "p-[5px] text-black bg-[#7676] border-[1px] border-[#737373]"}`}>
+                                    <FaThList />
                                 </div>
-                                <div className="flex  gap-4">
-                                    <div className="flex gap-5 cursor-pointer">
-                                        <div className="pt-2 text-[16px] text-[#767676]">
-                                            <h1>Sort by:</h1>
-                                        </div>
-                                        <div className="w-40">
-                                            <select
-                                                id="category"
-                                                name="category"
-                                                className="block w-full font-bold text-[#767676]  rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:ring focus:ring-blue-200"
-                                            >
-                                                <option className="font-bold text-[#767676]">1</option>
-                                                <option className="font-bold text-[#767676]">2</option>
-                                                <option className="font-bold text-[#767676]">3</option>
-                                                <option className="font-bold text-[#767676]">4</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                   {!filterCategory.length && ( <div className="flex gap-2 text-center items-center">
-                                        <div className="text-[16px] text-[#767676]">
-                                            <h4 >Show:</h4>
-                                        </div>
-                                        <div className="w-24">
-                                            <select onChange={handlePageNumber}
-                                                name=""
-                                                id="" className=" border-[1px] border-[#0062ff42] py-2 rounded-[5px] shadow-md pl-20 pr-1">
-                                                <option value="6">6</option>
-                                                <option value="12">12</option>
-                                                <option value="18">18</option>
-                                                <option value="24">24</option>
-                                                <option value="30">30</option>
-                                            </select>
-                                        </div>
-
-                                    </div>)}
-                                </div>
-                            </div>
-                            <div className="pl-6 pt-6 w-12/12">
-                                <Poste allPage={allPage} filterCategory={filterCategory} Active={Active}/>
-                            </div>
-                            <div className="pl-6 pt-6 cursor-pointer font-bold font-dm">
-                                {!filterCategory.length && (<Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage} />)}
                             </div>
                         </div>
-                    </div>
+                        <div className="flex  gap-4">
+                            <div className="flex gap-5 cursor-pointer">
+                                <div className="pt-2 text-[16px] text-[#767676]">
+                                    <h1>Sort by:</h1>
+                                </div>
+                                <div className="w-40">
+                                    <select
+                                        id="category"
+                                        name="category"
+                                        className="block w-full font-bold text-[#767676]  rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:ring focus:ring-blue-200"
+                                    >
+                                        <option className="font-bold text-[#767676]">1</option>
+                                        <option className="font-bold text-[#767676]">2</option>
+                                        <option className="font-bold text-[#767676]">3</option>
+                                        <option className="font-bold text-[#767676]">4</option>
+                                    </select>
+                                </div>
 
-                </Container>
-            </section>
+                            </div>
+                            {!filterCategory.length && (<div className="flex gap-2 text-center items-center">
+                                <div className="text-[16px] text-[#767676]">
+                                    <h4 >Show:</h4>
+                                </div>
+                                <div className="w-24">
+                                    <select onChange={handlePageNumber}
+                                        name=""
+                                        id="" className=" border-[1px] border-[#0062ff42] py-2 rounded-[5px] shadow-md pl-20 pr-1">
+                                        <option value="6">6</option>
+                                        <option value="12">12</option>
+                                        <option value="18">18</option>
+                                        <option value="24">24</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                </div>
+
+                            </div>)}
+                        </div>
+                    </div>
+                    <div className="pl-6 pt-6 w-12/12">
+                        <Poste allPage={allPage} filterCategory={filterCategory} Active={Active} />
+                    </div>
+                    <div className="pl-6 pt-6 cursor-pointer font-bold font-dm">
+                        {!filterCategory.length && (<Pagination pageNumber={pageNumber} twoclick={twoclick} next={next} prev={prev} currentPage={currentPage} />)}
+                    </div>
+                </div>
         </div>
-  )
+
+                </Container >
+            </section >
+        </div >
+    )
 }
 
 export default Shop
