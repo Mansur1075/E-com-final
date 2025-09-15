@@ -218,7 +218,7 @@ const ProductsDetails = () => {
               <div className="text-[16px] font-dm text-[#767676]"><h4>6 months ago</h4></div>
             </div>
             <div className="w-full pt-3 text-[14px] font-dm text-[#767676]">
-              <p>Lorem Ipsum is simply dummy text of the printing and <br /> typesetting industry Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit. Atque a, sit maxime aut similique deserunt <br /> aliquid voluptate quasi hic temporibus. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and  typesetting industry Lorem ipsum dolor  sit amet consectetur adipisicing elit. Atque a, sit maxime aut similique deserunt Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius odio asperiores et quam quasi architecto impedit unde minus tenetur quibusdam nemo, autem veritatis, ipsa temporibus deleniti. Nihil repudiandae distinctio nobis dignissimos accusantium possimus aperiam pariatur rem alias vitae tempora ab officia repellat sed, unde ipsam sit quibusdam? Consequuntur, maxime sit! aliquid voluptate quasi hic temporibus. </p>
             </div>
           </div>
 
