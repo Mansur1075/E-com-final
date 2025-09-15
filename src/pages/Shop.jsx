@@ -29,6 +29,9 @@ const Shop = () => {
     let [Active, setActive] = useState(true)
     let [category, setCategory] = useState([]);
     let [filterCategory, setFilterCategory] = useState([]);
+    let [brand , setBrand] = useState()
+    let [low , setLow] = useState()
+    let [high , sethigh] = useState()
 
 
 
@@ -64,6 +67,7 @@ const Shop = () => {
     }
     useEffect(() => {
         setCategory([...new Set(info.map((item) => item.category))]);
+        setBrand([...new Set(info.map((item) => item.brand))]);
 
     }, [info])
     console.log(category);
@@ -100,6 +104,24 @@ const Shop = () => {
         setActive(false)
 
     }
+
+    let handleBrand = (bitem) =>{
+        let filterBrand = info.filter((item)=> item.brand == bitem)
+        setFilterCategory(filterBrand)
+    }
+
+    let handlePrice = (value) =>{
+        setLow(value.low);
+        sethigh(value.high);
+        let Pricefilter = info.filter((item)=> item.price > value.low && item.price < value.high)
+       setFilterCategory(Pricefilter);
+       
+        
+        
+    }
+    console.log(low);
+    console.log(high);
+    
 
 
 
@@ -164,11 +186,10 @@ const Shop = () => {
                             </div>
                             {tmw &&
                                 <ul>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">Brand 1</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">Brand 2</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">Brand 3</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">Brand 4</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">Brand 5</li>
+                                    {brand.map((item)=>(
+
+                                    <li onClick={()=>handleBrand(item)} className="text-[#767676] text-[16px] font-bold pt-2 cursor-pointer">{item}</li>
+                                    ))}
                                 </ul>
                             }
                             <div onClick={() => towShow(!tow)} className=" flex justify-between items-center pt-3">
@@ -176,12 +197,9 @@ const Shop = () => {
                                 {tow ? <FaCaretDown /> : <FaCaretUp />}
                             </div>
                             {tow &&
-                                <ul>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">$0.00 - $9.99</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">$0.00 - $9.99</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">$0.00 - $9.99</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">$0.00 - $9.99</li>
-                                    <li className="text-[#767676] text-[16px] border-b-[2px] pt-2">$0.00 - $9.99</li>
+                                <ul className=" select-none cursor-pointer">
+                                    <li onClick={()=>handlePrice({low:0 , high:10})} className="text-[#767676] text-[16px] font-bold  pt-2">$00 - $10</li>
+                                    <li onClick={()=>handlePrice({low:11 , high:20})} className="text-[#767676] text-[16px] font-bold  pt-2">$11 - $10</li>
                                 </ul>
                             }
                         </div>
@@ -196,8 +214,8 @@ const Shop = () => {
                                     <FaThList />
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex  gap-4">
+                        </div>{!filterCategory.length &&(
+                             <div className="flex  gap-4">  
                             <div className="flex gap-5 cursor-pointer">
                                 <div className="pt-2 text-[16px] text-[#767676]">
                                     <h1>Sort by:</h1>
@@ -234,6 +252,8 @@ const Shop = () => {
 
                             </div>)}
                         </div>
+                        )}
+                       
                     </div>
                     <div className="pl-6 pt-6 w-12/12">
                         <Poste allPage={allPage} filterCategory={filterCategory} Active={Active} />
