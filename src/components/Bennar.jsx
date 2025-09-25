@@ -5,8 +5,7 @@ import { useSelector } from "react-redux";
 
 const Bennar = () => {
 
-  let data = useSelector((state)=> state.product.products) 
-  console.log(data);
+  
   
 
   const settings = {
@@ -47,8 +46,15 @@ const Bennar = () => {
       </div>
     )
   };
+   
+
+   let ruslte = useSelector((state)=> state.product.products)
+   console.log(ruslte);
+   
   return (
     <div>
+      <h2>{ruslte}</h2>
+
         <Slider {...settings}>
 
         <div className="">
