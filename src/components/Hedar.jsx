@@ -20,9 +20,9 @@ const Hedar = () => {
                             :" opacity-1 lg:opacity-100 h-[0] lg:h-[0] z-[-1]"  }`}>
                             <Link to="/">  <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-7 lg:pt-0 leading-0 py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>Home</li></Link>
                             <Link to="/shop"> <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-6 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>Shop</li></Link>
-                            <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>About</li>
-                            <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>Contacts</li>
-                            <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold cursor-pointer '>Journal</li>
+                            <Link to="/about"><li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>About</li></Link>
+                            <Link to="/contacts"> <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold  cursor-pointer '>Contacts</li></Link>
+                            <Link to="journal"> <li className='font-dm text-[16px] text-[#767676] hover:text-[#262626] pt-8 lg:pt-0  leading-0  py-1 duration-300 ease-in-out hover:font-bold cursor-pointer '>Journal</li></Link>
                         </ul>
                     </div>
                     <div className="lg:hidden absolute top-0 pt-2 right-2 z-[1]" onClick={()=>setMenu(!menu)}>{menu ?<GiCrossedSwords />:<FaBars />}

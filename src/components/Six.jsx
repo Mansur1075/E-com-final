@@ -14,7 +14,7 @@ const Six = () => {
                 <div className="w-3/12 relative">
                     <img src={text1} alt="" />
                      <div className="">
-                     <button className='px-[20px] py-[5px] bg-[#000] text-[#fff] absolute top-2 left-2 cursor-pointer '>
+                     <button className='px-[20px] py-[5px] bg-[#000]  text-[#fff] absolute top-2 left-2 cursor-pointer '>
                         New
                      </button>
                      <div className="w-[3/12] flex justify-between pt-4">

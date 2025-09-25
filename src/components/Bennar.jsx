@@ -1,8 +1,14 @@
 import Slider from "react-slick";
 import row from  "../assets/row.png"
 import React from 'react'
+import { useSelector } from "react-redux";
 
 const Bennar = () => {
+
+  let data = useSelector((state)=> state.product.products) 
+  console.log(data);
+  
+
   const settings = {
     dots: true,
     arrows:false,

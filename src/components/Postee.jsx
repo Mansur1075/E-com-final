@@ -169,7 +169,7 @@ const Poste = ({ allPage, filterCategory, Active }) => {
             <div className="relative h-full overflow-hidden shadow-md group flex items-center">
               <Link to ={`/Shop/${item.id}`}> 
               
-              <img className="w-[70%] cursor-pointer object-cover" src={item.thumbnail} alt=""/>
+              <img className="w-[70%] cursor-pointer object-cover " src={item.thumbnail} alt=""/>
               </Link>
               <div className="absolute top-4 left-3 z-5">
                 <p className="py-[5px] px-[20px] border bg-black text-white font-bold text-[14px] font-dm">

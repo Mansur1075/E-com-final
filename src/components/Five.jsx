@@ -102,7 +102,7 @@ const Five = () => {
           <div className="five">
           <Slider {...settings}>
             {info.map((item) =>(     
-              <div className="W-3/12 relative overflow-hidden group p-4 rounded-2xl  ">
+              <div className=" relative flex overflow-hidden group p-4 gap-10 shadow-md h-[400px] w-full ml-2.5 ">
             <Link to="/shop">
             <div className=" hover:shadow-md duration-300 hover:bg-[#f0f8ff]">
               <img src={item.thumbnail} alt="" className='w-full' />
