@@ -2,7 +2,9 @@
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { useDispatch } from 'react-redux'
-import { allproduct } from '../components/slice/productSlice'
+
+
+
 
 const Contacts = () => {
   let dispatch = useDispatch()

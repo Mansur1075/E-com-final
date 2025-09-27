@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import row from  "../assets/row.png"
 import React from 'react'
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Bennar = () => {
 
@@ -48,12 +48,10 @@ const Bennar = () => {
   };
    
 
-   let ruslte = useSelector((state)=> state.product.products)
-   console.log(ruslte);
+
    
   return (
     <div>
-      <h2>{ruslte}</h2>
 
         <Slider {...settings}>
 

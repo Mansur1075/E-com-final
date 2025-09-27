@@ -8,9 +8,15 @@ import { IoIosStar, IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/
 import { Apidata } from "../components/ContextApi"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { useDispatch } from "react-redux";
+import { addToCart } from "../components/slice/productSlice"
+
+
 
 
 const ProductsDetails = () => {
+
+  let dispatch = useDispatch()
 
   let info = useContext(Apidata)
   let productId = useParams()
@@ -56,12 +62,26 @@ const ProductsDetails = () => {
 
   let [tty, ttyShow] = useState(0)
 
+  // function  handleAddToCart(){
+  //   alert("addTocart okky")
+  // }
+  
+  const handleAddToCart =(item)=>{
+   dispatch(addToCart ({...item}));
+
+  
+   
+   
+  }
+
+  
+
   return (
     <>
       <div className="py-5 pt-3">
         <Container>
           <div className="flex gap-4 justify-between">
-            <div className="w-6/12 m-auto ml-[400px] hover:shadow-md hover:bg-[#77667717] duration-300">
+            <div className="w-6/12 m-auto ml-[400px] hover:shadow-md hover:bg-[#77667717] rounded-[20px] duration-300">
               <img className="w-full" src={singleProducts.thumbnail} alt="" />
             </div>
           </div>
@@ -117,10 +137,10 @@ const ProductsDetails = () => {
               <h4 className="text-[16px] text-[#767676]">In stock</h4>
             </div>
             <div className="flex gap-4 pt-4">
-              <button className="py-2 px-5 border-[2px] border-[#7676] text-[14px] text-[#262626] hover:bg-[#000] hover:text-[#fff] duration-300">
+              <button  className="py-2 px-5 border-[2px] border-[#7676] text-[14px] text-[#262626] hover:bg-[#000] hover:text-[#fff] duration-300">
                 Add to Wish List
               </button>
-              <button className="py-2 px-7 border-[2px] border-[#7676] text-[14px] text-[#262626] hover:bg-[#000] hover:text-[#fff] duration-300">
+              <button onClick={()=>handleAddToCart(singleProducts)} className="py-2 px-7 border-[2px] border-[#7676] text-[14px] text-[#262626] hover:bg-[#000] hover:text-[#fff] duration-300">
                 Add to Cart
               </button>
             </div>
