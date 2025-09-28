@@ -36,8 +36,8 @@ const ProductsDetails = () => {
 
   let clientRating = Array.from({ length: 5 }, (_, index) => {
     let number = index + 0.5
-    return singleProducts.rating > index + 1 ? (<IoMdStar />) : singleProducts.rating > number ? <IoMdStarHalf /> :
-      (<IoMdStarOutline />);
+    return singleProducts.rating > index + 1 ? (<IoMdStar key={index}  />) : singleProducts.rating > number ? <IoMdStarHalf key={index} /> :
+      (<IoMdStarOutline key={index} />);
 
   })
 
@@ -67,7 +67,7 @@ const ProductsDetails = () => {
   // }
   
   const handleAddToCart =(item)=>{
-   dispatch(addToCart ({...item}));
+   dispatch(addToCart ({...item, qun:1}));
 
   
    
