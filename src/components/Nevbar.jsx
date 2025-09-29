@@ -4,6 +4,9 @@ import { FaAngleRight, FaBars, FaCaretDown, FaShoppingCart, FaUser } from 'react
 import { IoSearchOutline } from 'react-icons/io5'
 import { RxCross2, RxCrosshair2 } from 'react-icons/rx'
 import { ImCross } from 'react-icons/im'
+import { useSelector } from 'react-redux'
+import { Link } from "react-router-dom";
+
 
 const Nevbar = () => {
     let cateRef = useRef()
@@ -13,6 +16,9 @@ const Nevbar = () => {
     let [show, setshow] = useState(false)
     let [acchow, setAccshow] = useState(false)
     let [cartShow, setCartShow] = useState(false)
+    let cartData = useSelector((state) => state.product.cartItem)
+
+
 
     useEffect(() => {
         document.addEventListener("click", (e) => {
@@ -53,7 +59,7 @@ const Nevbar = () => {
                                             <span>Accessories</span>
                                             <FaAngleRight />
                                             <div className="pl-10 w-[475px] gap-5 shadow-lg absolute text-center top-[-10px] left-90 p-5 text-black hidden group-hover:flex bg-white z-10">
-                                              <ul className='text-gray-600 text-sm'>
+                                                <ul className='text-gray-600 text-sm'>
                                                     <h4 className='font-bold text-black pb-2 text-base'>Computers</h4>
                                                     <li className='hover:text-black'>Computer 1</li>
                                                     <li className='hover:text-black'>Computer 2</li>
@@ -73,7 +79,7 @@ const Nevbar = () => {
                                                     <li className='hover:text-black'>Computer 6</li>
                                                     <li className='hover:text-black'>Computer 7</li>
                                                 </ul>
-                                               <ul className='text-gray-600 text-sm'>
+                                                <ul className='text-gray-600 text-sm'>
                                                     <h4 className='font-bold text-black pb-2 text-base'>Computers</h4>
                                                     <li className='hover:text-black'>Computer 1</li>
                                                     <li className='hover:text-black'>Computer 2</li>
@@ -83,7 +89,7 @@ const Nevbar = () => {
                                                     <li className='hover:text-black'>Computer 6</li>
                                                     <li className='hover:text-black'>Computer 7</li>
                                                 </ul>
-                                                   <ul className='text-gray-600 text-sm'>
+                                                <ul className='text-gray-600 text-sm'>
                                                     <h4 className='font-bold text-black pb-2 text-base'>Computers</h4>
                                                     <li className='hover:text-black'>Computer 1</li>
                                                     <li className='hover:text-black'>Computer 2</li>
@@ -135,7 +141,7 @@ const Nevbar = () => {
                     </div>
                     <div className="w-1/7 relative">
                         <div className="flex items-center justify-end lg:gap-x-4 gap-2">
-                            
+
                             <div ref={accRef} className="flex cursor-pointer text-[12px] lg:text-[18px] lg:gap-1">
                                 <FaUser />
                                 <FaCaretDown />
@@ -149,32 +155,17 @@ const Nevbar = () => {
                                 </div>
                             }
 
+
+                           <Link to="/cart">
                             <div ref={cartRef} className="relative cursor-pointer text-[12px] lg:text-[18px]">
+                                <div className=" absolute bottom-4 text-[14px] text-[#fff] font-bold right-[-9px] bg-[red] w-[20px] h-[20px] text-center rounded-[50px]">
+                                    {cartData.reduce((total, item) => total + item.qun, 0)}
+                                </div>
                                 <FaShoppingCart />
-                                {cartShow &&
-                                    <div className="absolute top-[55px] right-0 w-[400px] bg-white shadow-lg  z-10 ">
-                                        <div className="bg-[#F5F5F3] p-4 flex items-center">
-                                            <div className="w-[80px] h-[80px] bg-[#979797]"></div>
-                                            <div className="">
-                                                <h4 className='ml-2 text-[16x]  font-dm'>Black Smart Watch</h4>
-                                                <h4 className='ml-2 font-dm'>$44.00</h4>
-                                            </div>
-                                            <div className="pl-[100px]">
-                                                <ImCross />
-                                            </div>
-                                        </div>
-                                        <div className="">
-                                            <div className=" font-bold text-[16x] pl-4 pt-4 pb-4">
-                                                <h4>Subtotal: $44.00</h4>
-                                            </div>
-                                            <div className="">
-                                                <button className=' border-[1px] px-[30px] py-[15px] mb-4 ml-5 hover:bg-[#000] hover:text-[#fff] duration-700'>View Cart</button>
-                                                <button className='  border-[1px] px-[30px] py-[15px] mb-4 ml-21 hover:bg-[#000] hover:text-[#fff] duration-700'>Checkout</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
                             </div>
+
+                           </Link>
+
                         </div>
                     </div>
                 </div>

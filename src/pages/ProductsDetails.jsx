@@ -67,11 +67,10 @@ const ProductsDetails = () => {
   // }
   
   const handleAddToCart =(item)=>{
-   dispatch(addToCart ({...item, qun:1}));
 
-  
+   dispatch(addToCart({ ...item, qun: 1 }));
    
-   
+
   }
 
   

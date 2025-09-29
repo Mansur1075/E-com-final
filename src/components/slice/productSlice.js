@@ -9,14 +9,16 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      let findindex = state.cartItem.findIndex((item) => item.id === action.payload.id);
+      let findIndex = state.cartItem.findIndex((item) => item.id === action.payload.id);
 
-      if (findindex !== -1) {
+      if (findIndex != -1) {
         // product ase
-        state.cartItem[findindex].qun += 1;
+        
+        state.cartItem[findIndex].qun++ ;
       } else {
         // product naii
-        state.cartItem=[state.cartItem, action.payload];
+  
+        state.cartItem.push({...action.payload, qun:1});
       }
     },
   },
