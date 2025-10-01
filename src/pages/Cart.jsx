@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Container from '../components/Container'
-import { removeCart } from '../components/slice/productSlice'
+import { decrement, increment, removeCart } from '../components/slice/productSlice'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
@@ -9,11 +9,24 @@ const Cart = () => {
     let cartData = useSelector((state) => state.product.cartItem)
 
     let handleCartItemRemove = (item) => {
-        dispatch(removeCart(item))
-
+        let result = confirm("Are You Sure...?")
+        if (result) {
+            dispatch(removeCart(item))
+        }
 
 
     }
+    const handleIncrement = (id) => {
+        dispatch(increment(id))
+    }
+
+
+    let handleDecrement = (id) => {
+        dispatch(decrement(id))
+
+    }
+
+
 
     return (
         <>
@@ -47,7 +60,7 @@ const Cart = () => {
                                                     </label>
                                                     <div className="flex items-center justify-between md:order-3 md:justify-end">
                                                         <div className="flex items-center">
-                                                            <button
+                                                            <button onClick={() => dispatch(decrement(item.id))}
                                                                 type="button"
                                                                 id="decrement-button"
                                                                 data-input-counter-decrement="counter-input"
@@ -74,11 +87,11 @@ const Cart = () => {
                                                                 id="counter-input"
                                                                 data-input-counter=""
                                                                 className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
-                                                                placeholder=""
-                                                                defaultValue={item.qun}
+                                                                placeholder={item.placeholder}
+                                                                Value={item.qun}
                                                                 required=""
                                                             />
-                                                            <button
+                                                            <button onClick={() => dispatch(increment(item.id))}
                                                                 type="button"
                                                                 id="increment-button"
                                                                 data-input-counter-increment="counter-input"
@@ -103,7 +116,7 @@ const Cart = () => {
                                                         </div>
                                                         <div className="text-end md:order-4 md:w-32">
                                                             <p className="text-base font-bold text-gray-900 dark:text-white">
-                                                                {item.price}
+                                                                 ${item.price}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -147,17 +160,17 @@ const Cart = () => {
                                         :
                                         <div className="flex items-center justify-center h-[70vh]">
                                             <div className="bg-white shadow-lg rounded-2xl p-10 text-center ml-42">
-                                                <h2 className="text-2xl font-semibold text-gray-700 mb-3">
-                                                    🛒 No cart items found
+                                                <h2 className="font-dm font-bold text-2xl text-[30px] text-gray-700 mb-3">
+                                                    No cart items found
                                                 </h2>
-                                                <p className="text-gray-500 mb-6">
+                                                <p className="text-gray-500 mb-6 font-dm font-medium">
                                                     Your cart is empty... try adding some products
                                                 </p>
-                                             <Link to="/shop">
-                                                <button className="px-6 py-2 rounded-xl bg-slate-600 text-white font-medium hover:bg-black duration-300 transition">
-                                                    🛍️ Go Shopping
-                                                </button>
-                                             </Link>
+                                                <Link to="/shop">
+                                                    <button className="px-6 py-2 rounded-xl bg-slate-600 text-white font-medium hover:bg-black duration-300 transition">
+                                                        Go Shopping
+                                                    </button>
+                                                </Link>
                                             </div>
                                         </div>
 
@@ -170,7 +183,7 @@ const Cart = () => {
                                 </div>
 
                             </div>
-                            {/* <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+                            <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
                                 <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                                     <p className="text-xl font-semibold text-gray-900 dark:text-white">
                                         Order summary
@@ -254,33 +267,8 @@ const Cart = () => {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                                    <form className="space-y-4">
-                                        <div>
-                                            <label
-                                                htmlFor="voucher"
-                                                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                                            >
-                                                {" "}
-                                                Do you have a voucher or gift card?{" "}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="voucher"
-                                                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                                placeholder=""
-                                                required=""
-                                            />
-                                        </div>
-                                        <button
-                                            type="submit"
-                                            className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                        >
-                                            Apply Code
-                                        </button>
-                                    </form>
-                                </div>
-                            </div> */}
+                                
+                            </div>
                         </div>
                     </div>
                 </section>

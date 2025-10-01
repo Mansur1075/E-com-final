@@ -25,13 +25,32 @@ export const productSlice = createSlice({
     removeCart:(state, action)=>{
       let filtercart = state.cartItem.filter((item)=> item.id != action.payload.id)
       state.cartItem = filtercart;
-    }
+    },
+    
+    // increment:(state,action) =>{
+    //   let item = state.cartItem.find((x)=>x.id ===action.payload)
+    //   if(item){
+    //     item.qun +=1
+    //   }
+    // }
+     increment: (state, action) => {
+      let item = state.cartItem.find((item) => item.id === action.payload);
+      if (item) {
+        item.qun += 1;
+      }
+    },
 
+     decrement: (state, action) => {
+      let item = state.cartItem.find((item) => item.id === action.payload);
+      if (item && item.qun > 1) {
+        item.qun -= 1;
+      }
+    },
 
 
   },
 });
 
-export const { addToCart, removeCart } = productSlice.actions;
+export const { addToCart, removeCart, increment, decrement } = productSlice.actions;
 
 export default productSlice.reducer;
