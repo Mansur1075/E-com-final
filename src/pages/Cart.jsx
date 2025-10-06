@@ -114,9 +114,11 @@ const Cart = () => {
                                                                 </svg>
                                                             </button>
                                                         </div>
-                                                        <div className="text-end md:order-4 md:w-32">
+                                                        <div className="text-end md:order-4 md:w-32 relative">
                                                             <p className="text-base font-bold text-gray-900 dark:text-white">
-                                                                 ${item.price}
+                                                                <div className=" bg-[#6767] text-center py ml-4 rounded-2xl">
+                                                                     ${item.totalPrice}
+                                                                </div>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -228,7 +230,7 @@ const Cart = () => {
                                                 Total
                                             </dt>
                                             <dd className="text-base font-bold text-gray-900 dark:text-white">
-                                                $8,191.00
+                                                 ${item.totalPrice}
                                             </dd>
                                         </dl>
                                     </div>
