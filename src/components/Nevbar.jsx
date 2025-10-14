@@ -6,6 +6,9 @@ import { RxCross2, RxCrosshair2 } from 'react-icons/rx'
 import { ImCross } from 'react-icons/im'
 import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
+import { useContext } from 'react'
+import { Apidata } from './ContextApi'
+
 
 
 const Nevbar = () => {
@@ -17,6 +20,13 @@ const Nevbar = () => {
     let [acchow, setAccshow] = useState(false)
     let [cartShow, setCartShow] = useState(false)
     let cartData = useSelector((state) => state.product.cartItem)
+    let [filterProducts, setFilterProduct] = useState([])
+
+    console.log(filterProducts);
+
+
+
+
 
 
 
@@ -41,6 +51,26 @@ const Nevbar = () => {
             }
         })
     }, [show, acchow, cartShow])
+
+    // product data fetch
+
+    let { info, loading } = useContext(Apidata)
+    console.log(info, loading);
+
+
+    // search functionality apply
+
+    let handleSearch = (e) => {
+        let productFilter = info.filter((item) => item.title.toLowerCase().includes(e.target.value.toLowerCase()));
+        setFilterProduct(productFilter);
+
+
+
+
+
+
+
+    }
 
     return (
         <div className='py-3 bg-[#F5F5F3]'>
@@ -133,11 +163,23 @@ const Nevbar = () => {
 
                     <div className="w-4/7">
                         <div className='flex justify-between items-center relative'>
-                            <input className="bg-white lg:py-5 pr-[-5px] py-3 pl-[20px] lg:pl-5 lg:pr-[38px] lg:w-full border-0  shadow-lg outline-0" type="text" placeholder='Search Products' />
+                            <input onChange={handleSearch} className="bg-white lg:py-5 pr-[-5px] py-3 pl-[20px] lg:pl-5 lg:pr-[38px] lg:w-full border-0 rounded-4xl shadow-lg outline-0" type="text" placeholder='Search Products ' />
                             <div className="absolute lg:top-[23px] lg:right-[18px] right-[18px] pl-3 text-gray-600">
                                 <IoSearchOutline className='text-[20px] font-bold' />
                             </div>
                         </div>
+                        {/* {product show} */}
+                        <div className="w-3/7 h-auto border-2 absolute top-34 z-[5] items-center left-136 border-[#7676] rounded-xl p-3 flex flex-wrap justify-center gap-4 bg-gray-900">
+                            {filterProducts.map((item) => (
+                                <div key={item.id} className="w-[150px] bg-gray-800 rounded-lg overflow-hidden text-center hover:scale-105 duration-300">
+                                    <img src={item.thumbnail} alt={item.title} className="w-full h-[120px] object-cover" />
+                                    <h3 className="text-white text-sm font-semibold p-1">{item.title}</h3>
+                                    <p className="text-gray-300 text-xs pb-2">${item.price}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* {product show} */}
                     </div>
                     <div className="w-1/7 relative">
                         <div className="flex items-center justify-end lg:gap-x-4 gap-2">
@@ -156,15 +198,15 @@ const Nevbar = () => {
                             }
 
 
-                           <Link to="/cart">
-                            <div ref={cartRef} className="relative cursor-pointer text-[12px] lg:text-[18px]">
-                                <div className=" absolute bottom-4 text-[14px] text-[#fff] font-bold right-[-9px] bg-[red] w-[20px] h-[20px] text-center rounded-[50px]">
-                                    {cartData.reduce((total, item) => total + item.qun, 0)}
+                            <Link to="/cart">
+                                <div ref={cartRef} className="relative cursor-pointer text-[12px] lg:text-[18px]">
+                                    <div className=" absolute bottom-4 text-[14px] text-[#fff] font-bold right-[-9px] bg-[red] w-[20px] h-[20px] text-center rounded-[50px]">
+                                        {cartData.reduce((total, item) => total + item.qun, 0)}
+                                    </div>
+                                    <FaShoppingCart />
                                 </div>
-                                <FaShoppingCart />
-                            </div>
 
-                           </Link>
+                            </Link>
 
                         </div>
                     </div>
